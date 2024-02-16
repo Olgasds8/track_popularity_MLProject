@@ -13,6 +13,13 @@ The first aim of this project is to find out if there is a link between the lyri
 
 In this sense, the initial data collects 30000 Spotify songs with several audio features that Spotify already provides for its tracks, which have been obtained using Spotify API. You can learn more about the dataset later in the documentation section. 
 
+## Content
+- [Workflow](#workflow)
+- [Technologies and Tools](#technologies and tools)
+- [Documentation](#documentation)
+- [Future Improvements](#Future improvements)
+- [Contributions](#contributions)
+
 ## Workflow
 From data extraction to model evaluation, notable steps include:
 * Web scrapping lyrics
