@@ -15,9 +15,9 @@ In this sense, the initial data collects 30000 Spotify songs with several audio 
 
 ## Content
 - [Workflow](#workflow)
-- [Technologies and Tools](#technologies and tools)
+- [Technologies and Tools](#technologies-and-tools)
 - [Documentation](#documentation)
-- [Future Improvements](#Future improvements)
+- [Future Improvements](#Future-improvements)
 - [Contributions](#contributions)
 
 ## Workflow
