@@ -1,41 +1,71 @@
-# track_popularity_MLProject
-This project leverages machine learning techniques in Python to predict the popularity of songs based on various audio features obtained from the Spotify API. It involves an end-to-end data pipeline that incorporates data extraction, web scraping, data preprocessing, natural language processing (NLP) tasks, and model building.
+<img src="https://pbs.twimg.com/profile_images/1392422291808587776/BSCkw4DW_400x400.jpg" alt="IDbootcamp Logo" width="100"/>
+*Olga Sanz de Sousa* - Bootcamp in Data Science & Machine Learning Final Project 
 
-# Technologies and Tools Used:
+# Track Popularity - Machine Learning & Deep Learning 🎧
 
-Python
-Spotify and MusixMatch API
-Pandas, NumPy, Scikit-learn
-BeautifulSoup (for web scraping)
-Natural Language Toolkit (NLTK) for NLP tasks
-Pysentimiento (for sentiment analysis)
-BERT (NLP)
-LDA Topic Labelling
-Matplotlib, Seaborn (for data visualization)
-GitHub for version control and project management
+This project leverages machine learning and deep learning techniques in Python to predict the popularity of songs based on various audio features obtained from the Spotify API. It involves an end-to-end data pipeline incorporating data extraction, web scraping, data preprocessing, natural language processing (NLP) tasks, machine learning and deep learning modeling.
 
-# HOW POPULAR WOULD MY SONG BE? 
+## How popular will my song be? 🎶
 
-In this project we will try to answer this question, trying to predict the popularity of songs with lyrics based on the analysis on the audio features and the lyrics of the song. 
+In this project we will try to answer this question, predicting the popularity of songs with lyrics basing the model on the analysis of the audio features and the lyrics of the song. 
 
-Due to the fact that selecting the initial data manually and choosing the songs for the study would have taken much longer, we decided to start by looking for an existing dataframe with Spotify track id’s to be able to work with the Spotify Track Id as Primary Key for extracting new data if necessary later.
+The first aim of this project is to find out if there is a link between the lyrics of a song and its popularity, and how significant may this link be. The second aim is to trace a study direction for future projects in the music industry, to establish the basis for a prediction, which with the right data - difficult to access if you don't work within the music market - will be more accurate. For predicting the popularity of a song there are several variables to take into account, such as the effect of the artist or the marketing around a release. To achieve a functional algorithm, some of these variables should be controlled through the sampling data, selecting songs by niches, or addressing the problem by genre. However, since a specific sample selection would have taken much longer and taking into account that this is a final bootcamp project for consolidating the knowledge acquired, we decided to establish a data starting point: songs in English from Spotify with a Spotify Id as Primary Key for extracting new data if necessary later.
 
-In this sense, the initial data collects 30000 Spotify songs with several audio features that Spotify already provides for its tracks and that may have been obtained using Spotify API. You will find it within our documentation but it’s also available at https://www.kaggle.com/datasets/joebeachcapital/30000-spotify-songs?select=spotify_songs.csv
+In this sense, the initial data collects 30000 Spotify songs with several audio features that Spotify already provides for its tracks, which have been obtained using Spotify API. You can learn more about the dataset later in the documentation section. 
 
-DOCUMENTATION: 
+## Workflow
+From data extraction to model evaluation, notable steps include:
+* Web scrapping lyrics
+* Accessing Spotify and MusixMatch APIs for data extraction
+* Addressing target imbalance
+* Controlling colinearity
+* Resampling
+* Testing machine learning models with audio features and evaluating bias/variance.
+* Testing deep learning models with lyrics features
+* Non-supervised learning for topic labeling the lyrics
+* Assessing global performance
+
+## Technologies and Tools:
+- Programming Language: Python
+- Data Extraction: Spotify & MusixMatch APIs
+- Web Scrapping: BeautifulSoup
+- Data Manipulation and Analysis: NumPy, Pandas
+- NLP: Natural Language Toolkit (NLTK), LDA Topic Labelling
+- Machine Learning: Scikit-Learn, XGBoost
+- Deep Learning: Transformers BERT, Torch
+- Data Visualization: Matplotlib, Seaborn
+- Model Evaluation: Root Mean Squared Error, Mean Absolute Error, R2
+- Version Control, Project Management: Github
+- Project Documentation: Jupyter Notebooks, Google Collab
+
+## DOCUMENTATION: 
 All the data used in the project. You will find a description of the df_final features, which will be the ones used in our model. 
 
-- DATAFRAMES:
+**NOTEBOOKS**: 
 
-df_initial_32833.csv: Starting dataframe with 32833 instances. Features include 'track_id', 'track_name', 'track_artist', 'track_popularity', 'track_album_id', 'track_album_name', 'track_album_release_date', ‘playlist_name', 'playlist_id', 'playlist_genre', 'playlist_subgenre', 'danceability', 'energy', 'key', 'loudness', 'mode', 'speechiness’, ‘acousticness', 'instrumentalness', 'liveness', 'valence', 'tempo', 'duration_ms’. 
+**1. Exploring raw data**: Brief analysis of the df_initial. 
 
-df_songs_lang_lyrics_8072.csv: Dataframe with 8072 instances, including previous features, language of lyrics, lyrics and artist popularity. Songs with English lyrics only and after deleting duplicates.
+**2. Obtaining language_lyrics_artistpop**: Eliminating duplicates. Using Spotify API for obtaining the artist_popularity, the MusixMatch API for obtaining the language of the lyrics and web scrapping for obtaining the lyrics of the songs in English. Finally exporting df_songs_lang_lyrics_8072.csv. 
 
-df_songs_resampled_7637.csv: Similar to the previous dataframe but after resampling for normalizing the distribution of ‘track_popularity’. It has 7637 instances and it is the definitive number of instances we will be working with. 
+**3. EDA and resampling**: Exploratory analysis of features and resampling for normal distribution of Y (‘track_popularity’). Finally exporting df_songs_resampled_7637.csv.
 
-df_lyrics.csv: It is the lyrics dataframe, it has 7637 instances and features include the clean lyrics of the song and other lyric features which origin is explained in the 4th notebook.
+**4. Obtaining lyrics dataframe**: NLP of lyrics, obtaining lyrics features. Finally exporting df_lyrics.csv.
 
-df_final.csv: It is the dataframe we will be using for machine learning, it has 7637 instances and features include: 
+**5. Chorus and topic labelling**: Merging the dataframe with the audio features and the one with the lyrics features. LDA Topic modeling and getting 3 topic labels for each song. Finally exporting df_final.csv.
+
+**6. Models**: Final analysis of features and machine learning with XGBoost Regression. 
+
+**DATAFRAMES**:
+
+**df_initial_32833.csv**: Starting dataframe with 32833 instances. Features include 'track_id', 'track_name', 'track_artist', 'track_popularity', 'track_album_id', 'track_album_name', 'track_album_release_date', ‘playlist_name', 'playlist_id', 'playlist_genre', 'playlist_subgenre', 'danceability', 'energy', 'key', 'loudness', 'mode', 'speechiness’, ‘acousticness', 'instrumentalness', 'liveness', 'valence', 'tempo', 'duration_ms’. 
+
+**df_songs_lang_lyrics_8072.csv**: Dataframe with 8072 instances, including previous features, language of lyrics, lyrics, and artist popularity. Songs with English lyrics only and after deleting duplicates.
+
+**df_songs_resampled_7637.csv**: Similar to the previous dataframe but after resampling for normalizing the distribution of ‘track_popularity’. It has 7637 instances and it is the definitive number of instances we will be working with. 
+
+**df_lyrics.csv**: It is the lyrics dataframe, it has 7637 instances and features including the clean lyrics of the song and other lyric features, fully explained in the 4th notebook.
+
+**df_final.csv**: It is the dataframe we will be using for machine learning, it has 7637 instances and features include: 
 
 - ‘track_id’: Song unique ID
 - ‘track_name’: Song name
@@ -83,7 +113,7 @@ df_final.csv: It is the dataframe we will be using for machine learning, it has 
 - ‘riq_lex_ws’: Lexical richness of the lyrics with stop words.
 - ‘MostFreqPercentage’: Percentage of presence in each song of the most frequent words within all the text.
 - ‘explicit’: Percentage of explicit vocabulary. 
-- ‘non_explicit’: Percentage of non explicit vocabulary.
+- ‘non_explicit’: Percentage of non-explicit vocabulary.
 - ‘has_intro’: 0 if the song does not have an intro, 1 if it has an intro. 
 - ‘has_outro’: 0 if the song does not have an intro, 1 if it has an intro. 
 - ‘chorus_count’: Count of chorus in the song. 
@@ -96,32 +126,17 @@ df_final.csv: It is the dataframe we will be using for machine learning, it has 
 - ‘topic2’: Second topic label of the song. 
 - ‘topic3’: Third topic label of the song. 
 
--df_results.csv: Dataframe with model results 
+**df_results.csv**: Dataframe with model results 
 
-- NOTEBOOKS: 
+**FUNCTIONS**
 
-1. Exploring raw data: Brief analysis of the df_initial. 
+**Funciones.py**: A Python document where you can find the most important functions we will be using and importing. Functions include: limpieza(x), word_token_sinstop(x), word_token(x), limpieza_chorus(x) and riqueza_lexica(x).
 
-2. Obtaining language_lyrics_artistpop: Eliminating duplicates. Using Spotify API for obtaining the artist_popularity, the MusixMatch API for obtaining the language of the lyrics and web scrapping for obtaining the lyrics of the songs in English. Finally exporting df_songs_lang_lyrics_8072.csv. 
-
-3. EDA and resampling: Exploratory analysis of features and resampling for normal distribution of Y (‘track_popularity’). Finally exporting df_songs_resampled_7637.csv.
-
-4. Obtaining lyrics dataframe: NLP of lyrics, obtaining lyrics features. Finally exporting df_lyrics.csv.
-
-5. Chorus and topic labelling: Merging the dataframe with the audio features and the one with the lyrics features. LDA Topic modeling and getting 3 topic labels for each song. Finally exporting df_final.csv.
-
-6. Models: Final analysis of features and machine learning with XGBoost Regression. 
-
-- FUNCTIONS
-
-- Funciones.py: A Python document where you can find the most important functions we will be using and importing. Functions include: limpieza(x), word_token_sinstop(x), word_token(x), limpieza_chorus(x) and riqueza_lexica(x).
-
-
-# Future Improvements:
+## Future Improvements:
 
 Based on the results obtained, we have not found a model that accurately predicts the song's popularity through the variables used. However, there are other avenues for exploration that could not be covered in this project, such as the use of a classifier model instead of a regressor model; the division of songs by musical genre or by artist popularity, to give more weight to lyrics over other characteristics; the use of other popularity metrics such as ratings or public rankings or other applications; the consideration of music production companies and marketing campaigns related to the songs; or the use of unsupervised learning algorithms, to find patterns and clusters not identified in the exploratory analysis.
-This project provides a starting point for the study of the effect that lyrics can have on a song's popularity, setting the direction for future studies in which it will be essential to focus on obtaining a more sensitive sample, perhaps by studying records by artist or by genre.
+This project provides a starting point for the study of the effect that lyrics can have on a song's popularity, setting the direction for future studies in which it will be essential to focus on obtaining a more sensitive sample, perhaps by studying records by artist or genre.
 
-# Contributions:
+## Contributions:
 
 Contributions and feedback from the community are welcome. Feel free to fork the repository, submit issues, or suggest improvements through pull requests.
